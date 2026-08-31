@@ -1,6 +1,6 @@
-# Fresh Docs memory
+# Memory
 
-This repository is the durable, human-readable documentation library used by the `$fresh-docs` Codex skill.
+This repository is the durable, human-readable documentation library used by the `$memory` Codex skill.
 
 Documentation is organized by library and exact version under `libraries/`. The searchable catalog lives at [`catalog/libraries.md`](catalog/libraries.md).
 

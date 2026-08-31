@@ -19,7 +19,13 @@ A scheduled audit may inspect the catalog and repository metadata for:
 
 The audit reports findings. It does not crawl documentation sites, delete pages, or refresh every entry.
 
-## 3. Bounded cloud curation
+## 3. Weekly documentation refresh
+
+At 06:00 UTC each Monday, the scheduled refresh checks every topic registered in the catalog against its authoritative source. It updates a page and its catalog retrieval date only after successfully retrieving that source, then opens a pull request for review. Exact-version documentation remains pinned to that version; the refresh must not silently replace it with current-version behavior.
+
+The refresh is bounded by the existing catalog: it does not discover new topics, delete pages, or crawl beyond each entry's declared source. If every indexed page is current, it makes no changes.
+
+## 4. Bounded cloud curation
 
 Use a cloud agent for a selected batch, such as one framework version or at most twenty catalog repairs. Give it exact paths and authoritative sources. Require a reviewable branch or pull request, a concise change summary, and a fixed stopping condition. Never run an indefinite crawler.
 

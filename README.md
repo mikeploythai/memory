@@ -2,7 +2,7 @@
 
 This repository is the durable, human-readable documentation library used by the `$memory` Codex skill.
 
-Documentation is organized by library and exact version under `libraries/`. The searchable catalog lives at [`catalog/libraries.md`](catalog/libraries.md).
+Documentation is organized by library and exact version under `libraries/`. The searchable catalog lives at [`catalog/libraries.md`](catalog/libraries.md). Maintenance follows the bounded workflow in [`catalog/maintenance.md`](catalog/maintenance.md).
 
 ## Principles
 

@@ -1,57 +1,26 @@
 ---
 library: "@tanstack/react-router"
 version: "1.170.32"
-topic: "file-based routing"
-source: "https://tanstack.com/router/latest/docs/quick-start"
+topic: "file-based routing and naming conventions"
+source: "https://github.com/TanStack/router/blob/a5a5bacc8fdf30b7823caf0a94908c3e0db27aa2/docs/router/routing/file-based-routing.md"
 retrieved_at: "2026-08-31"
-source_ref: "@tanstack/react-router@1.170.32; moving React v1 docs"
+source_ref: "@tanstack/react-router@1.170.32 / a5a5bacc8fdf30b7823caf0a94908c3e0db27aa2"
 ---
 
-# File-based routing with TanStack Router
+# File-based routing and naming conventions
 
-TanStack Router's React documentation recommends file-based routing for most applications. The current documentation is a moving React v1 source; the package version recorded here is 1.170.32.
+File-based routing turns files under the configured routes directory into a generated route tree. Each route file exports `Route`, normally created with `createFileRoute`. The bundler plugin or Router CLI watches the directory, writes the route path argument, and regenerates `routeTree.gen.ts`. That generated file should be excluded from formatting and lint rules and should not be edited by hand.
 
-## Installation and requirements
+Route filenames encode hierarchy. Dots and directories can both express nesting. `index` identifies an index route, `$name` creates a required path parameter, and a trailing splat captures the rest of the path. An underscore prefix creates a pathless layout; a trailing underscore breaks a route out of a parent nesting relationship. Parentheses form organizational route groups without changing the URL. Square brackets escape characters that would otherwise be interpreted by the naming grammar.
 
-```sh
-npm install @tanstack/react-router
-```
+Files and directories prefixed with the configured ignore prefix are excluded, which allows components and utilities to remain near their routes. Virtual file routes can combine a programmatic route definition with file-backed route modules when the filesystem alone cannot express the desired organization.
 
-React and ReactDOM 18 or newer are required. TypeScript 5.3 or newer is recommended. A new Router-only project can be scaffolded with:
-
-```sh
-npx @tanstack/cli create --router-only
-```
-
-For an existing application, install the Router package and configure the official Router plugin or CLI so it can generate the route tree.
-
-## Define a file route
-
-Export the route as `Route`. The generator manages the literal path passed to `createFileRoute`.
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/')({
-  loader: async () => ({ greeting: 'Hello' }),
-  component: Home,
-})
-
-function Home() {
-  const data = Route.useLoaderData()
-  return <h1>{data.greeting}</h1>
-}
-```
-
-Create the router with the generated route tree, pass it to `RouterProvider`, and register its type through module augmentation for end-to-end route type safety.
-
-## Notes
-
-- The `latest` documentation can change and should be rechecked after seven days for current-behavior work.
-- Code-based routing is supported, but it is not the primary recommendation in the quick start.
-- Do not hand-edit the generated route tree or generator-managed route path.
+Configuration has sharp edges. Do not configure `routeFilePrefix`, `routeFileIgnorePrefix`, `routeFileIgnorePattern`, `indexToken`, or `routeToken` so that their meanings overlap. The exact-version API warns that token collisions can produce unexpected routing behavior. Keep `routesDirectory` and `generatedRouteTree` relative to the working directory, and regenerate after moves or renames before relying on inferred types.
 
 ## Sources
 
-- https://tanstack.com/router/latest/docs/installation/manual
-- https://tanstack.com/router/latest/docs/guide/creating-a-router
+- https://github.com/TanStack/router/blob/a5a5bacc8fdf30b7823caf0a94908c3e0db27aa2/docs/router/routing/file-based-routing.md
+- https://github.com/TanStack/router/blob/a5a5bacc8fdf30b7823caf0a94908c3e0db27aa2/docs/router/routing/file-naming-conventions.md
+- https://github.com/TanStack/router/blob/a5a5bacc8fdf30b7823caf0a94908c3e0db27aa2/docs/router/api/file-based-routing.md
+
+

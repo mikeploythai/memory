@@ -1,62 +1,40 @@
 ---
 library: "@tanstack/ai"
 version: "0.52.0"
-topic: "streaming chat with React"
-source: "https://tanstack.com/ai/latest/docs/getting-started/quick-start"
+topic: "react streaming chat"
+source: "https://github.com/TanStack/ai/blob/%40tanstack%2Fai%400.52.0/docs/getting-started/quick-start.md"
 retrieved_at: "2026-08-31"
-source_ref: "@tanstack/ai@0.52.0; @tanstack/ai-react@0.22.4; release candidate"
+source_ref: "@tanstack/ai@0.52.0"
 ---
 
-# Streaming chat with TanStack AI and React
+# React streaming chat
 
-TanStack AI separates the framework-neutral chat runtime, React hooks, and model-provider adapters. The packages do not share one version number. The official project described the architecture as release candidate in August 2026, but it remains pre-v1 software.
+TanStack AI separates the server-side model run from the client-side conversation state. The server creates a `chat()` stream with a provider adapter and returns an AG-UI-compatible response. The React client consumes that stream through `useChat` and a connection adapter. Messages are structured UI records rather than plain strings: content, reasoning, tool calls, tool results, and structured output can arrive as distinct parts.
 
-## Installation
+## Version boundary
 
-```sh
-npm install @tanstack/ai @tanstack/ai-react @tanstack/ai-openai
-```
+These pages target `@tanstack/ai` 0.52.0. React examples and hooks use companion `@tanstack/ai-react` 0.22.4, as recorded by the exact-tag changelog. Provider packages have independent versions and must be resolved from the consuming project before implementation.
 
-## Server and client shape
+## Implementation guidance
 
-Keep provider credentials on the server. A server handler creates a stream and returns it as server-sent events.
+- Keep provider credentials and server tools behind the server route; send only the message and application context the route needs.
+- Choose a connection adapter explicitly and preserve message IDs when persisting or resuming a thread.
+- Render message parts by their discriminant instead of assuming every assistant message contains one text string.
+- Handle abort, error, finish, and interrupt states in the UI; a stream ending is not the same as a successful model turn.
 
-```ts
-import { chat, chatParamsFromRequest, toServerSentEventsResponse } from '@tanstack/ai'
-import { openaiText } from '@tanstack/ai-openai'
+## Constraints and failure modes
 
-export async function POST(request: Request) {
-  const params = await chatParamsFromRequest(request)
-  const stream = chat({
-    adapter: openaiText('gpt-5.6'),
-    messages: params.messages,
-    threadId: params.threadId,
-    runId: params.runId,
-  })
-  return toServerSentEventsResponse(stream)
-}
-```
+- Do not call provider adapters directly from browser code when that would expose a secret.
+- Do not flatten tool or reasoning parts into text before the client has processed their lifecycle events.
+- A React hook version that does not match the core/client packages can produce incompatible event or message types.
 
-Connect the React hook to that endpoint:
+## Retrieval cues
 
-```tsx
-import { useChat, fetchServerSentEvents } from '@tanstack/ai-react'
-
-const chat = useChat({
-  connection: fetchServerSentEvents('/api/chat'),
-})
-
-chat.sendMessage('Hello')
-```
-
-## Notes
-
-- Provider credentials belong on the server unless an application intentionally implements the documented bring-your-own-key flow.
-- Pin every TanStack AI package independently.
-- Pre-v1 APIs may change even when the overall architecture is considered release candidate.
+Use this page when work mentions react streaming chat, or when an implementation touches the APIs and lifecycle boundaries described above. Re-open the exact-tag sources before relying on signatures not reproduced here; this page organizes the documented behavior but does not replace the complete generated API reference.
 
 ## Sources
 
-- https://tanstack.com/ai/latest/docs/api/ai-react
-- https://tanstack.com/blog/tanstack-ai-rc
-- https://github.com/TanStack/ai/blob/main/packages/ai/CHANGELOG.md
+- https://github.com/TanStack/ai/blob/%40tanstack%2Fai%400.52.0/docs/getting-started/quick-start.md
+- https://github.com/TanStack/ai/blob/%40tanstack%2Fai%400.52.0/docs/chat/streaming.md
+- https://github.com/TanStack/ai/blob/%40tanstack%2Fai%400.52.0/docs/api/ai-react.md
+

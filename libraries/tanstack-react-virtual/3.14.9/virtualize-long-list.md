@@ -1,69 +1,42 @@
 ---
 library: "@tanstack/react-virtual"
 version: "3.14.9"
-topic: "virtualize a long React list"
-source: "https://tanstack.com/virtual/v3/docs/introduction"
+topic: "fixed, variable, and dynamic lists"
+source: "https://github.com/TanStack/virtual/blob/%40tanstack%2Freact-virtual%403.14.9/examples/react/fixed/README.md"
 retrieved_at: "2026-08-31"
-source_ref: "@tanstack/react-virtual@3.14.9; moving v3 docs"
+source_ref: "@tanstack/react-virtual@3.14.9"
 ---
 
-# Virtualize a long React list
+# Fixed, variable, and dynamic lists
 
-TanStack Virtual is headless. It calculates measurements and visible ranges; application code owns the scrolling element, total-size spacer, item markup, and positioning.
+Fixed lists use one dependable estimate; variable lists compute estimates from item knowledge; dynamic lists attach measurement to rendered elements. Estimates establish the initial scroll geometry, and measurements correct it as real content appears.
 
-## Installation
+## Version boundary
 
-```sh
-npm install @tanstack/react-virtual
-```
+The React adapter is `@tanstack/react-virtual` 3.14.9. Its exact changelog records `@tanstack/virtual-core` 3.17.7. Core option and instance behavior belongs to that companion version.
 
-The React adapter and `@tanstack/virtual-core` may have different patch versions. Record both from the lockfile for exact implementation work.
+## Implementation guidance
 
-## Use a virtualizer
+- Use a high, realistic estimate for dynamically measured items to reduce backward scroll adjustment.
+- Attach `measureElement` to each dynamic row and keep its `data-index` accurate.
+- Call `measure()` when a global layout input such as width or font changes.
+- Use `resizeItem` when the application knows a final size without DOM measurement.
 
-```tsx
-import { useRef } from 'react'
-import { useVirtualizer } from '@tanstack/react-virtual'
+## Constraints and failure modes
 
-export function Rows() {
-  const parentRef = useRef<HTMLDivElement>(null)
-  const virtualizer = useVirtualizer({
-    count: 10_000,
-    getScrollElement: () => parentRef.current,
-    estimateSize: () => 35,
-  })
+- Do not use `measureElement` and `resizeItem` as competing owners for the same item without a deliberate override.
+- Poor estimates cause visible correction and inaccurate initial scroll-to behavior.
+- Measuring hidden or incorrectly styled elements records unusable sizes.
+- Changing content without notifying or remeasuring leaves cached offsets stale.
 
-  return (
-    <div ref={parentRef} style={{ height: 400, overflow: 'auto' }}>
-      <div style={{ height: virtualizer.getTotalSize(), position: 'relative' }}>
-        {virtualizer.getVirtualItems().map((item) => (
-          <div
-            key={item.key}
-            style={{
-              position: 'absolute',
-              width: '100%',
-              height: item.size,
-              transform: `translateY(${item.start}px)`,
-            }}
-          >
-            Row {item.index}
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-```
+## Retrieval cues
 
-## Notes
-
-- Give `estimateSize` a realistic value to reduce scroll correction.
-- Dynamic-height items require measurement handling.
-- The scroll container must have constrained dimensions and scrolling enabled.
-- The `v3` documentation is major-versioned but moves as v3 changes.
+Use this page when work mentions fixed, variable, and dynamic lists, or when an implementation touches the APIs and lifecycle boundaries described above. Re-open the exact-tag sources before relying on signatures not reproduced here; this page organizes the documented behavior but does not replace the complete generated API reference.
 
 ## Sources
 
-- https://tanstack.com/virtual/latest/docs/installation
-- https://tanstack.com/virtual/latest/docs/framework/react
-- https://github.com/TanStack/virtual/releases
+- https://github.com/TanStack/virtual/blob/%40tanstack%2Freact-virtual%403.14.9/examples/react/fixed/README.md
+- https://github.com/TanStack/virtual/blob/%40tanstack%2Freact-virtual%403.14.9/examples/react/variable/README.md
+- https://github.com/TanStack/virtual/blob/%40tanstack%2Freact-virtual%403.14.9/examples/react/dynamic/README.md
+- https://github.com/TanStack/virtual/blob/%40tanstack%2Freact-virtual%403.14.9/docs/api/virtualizer.md
+

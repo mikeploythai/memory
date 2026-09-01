@@ -1,58 +1,37 @@
 ---
 library: "@tanstack/charts"
 version: "0.16.0"
-topic: "accessible React chart"
-source: "https://github.com/TanStack/charts/tree/v0.16.0/docs"
+topic: "stability, installation, and react quick start"
+source: "https://github.com/TanStack/charts/blob/v0.16.0/docs/stability.md"
 retrieved_at: "2026-08-31"
-source_ref: "v0.16.0; alpha"
+source_ref: "v0.16.0"
 ---
 
-# Define and render an accessible React chart
+# Stability, installation, and React quick start
 
-TanStack Charts 0.16.0 is alpha software. New React applications install `@tanstack/charts` and import the React renderer through the package's `react` subpath.
+Charts 0.16.0 is an alpha release. Its package uses explicit ESM subpaths for the core grammar, scales, adapters, renderers, and optional capabilities. A React chart is built from a stable definition and rendered through the React adapter; the chart follows its container unless a size is explicitly owned elsewhere.
 
-## Installation
+## Implementation guidance
 
-```sh
-npm install @tanstack/charts react react-dom
-```
+- Pin the 0.16.x package when reproducibility matters; alpha minor releases may change APIs.
+- Import framework and scale features from documented subpaths so tree shaking can preserve optional boundaries.
+- Keep a chart definition stable until captured data or options change.
+- Provide an accessible label and a container with measurable dimensions.
 
-## Define and render
+## Constraints and failure modes
 
-```tsx
-import { barY, defineChart } from '@tanstack/charts'
-import { scaleBand } from '@tanstack/charts/scales/band'
-import { scaleLinear } from '@tanstack/charts/scales/linear'
-import { Chart } from '@tanstack/charts/react'
+- Do not use hosted `latest` as a version-pinned source; it follows unreleased main.
+- Recreating a definition on every render makes identity the update boundary and can reset work or state.
+- A zero-size or unmeasurable container cannot produce a useful responsive layout.
+- Assume no semver-stable API across alpha minor releases.
 
-const rows = [
-  { month: 'Jan', revenue: 42 },
-  { month: 'Feb', revenue: 57 },
-]
+## Retrieval cues
 
-const definition = defineChart({
-  marks: [barY(rows, { x: 'month', y: 'revenue' })],
-  scales: {
-    x: { scale: () => scaleBand().padding(0.18) },
-    y: { scale: scaleLinear, nice: true },
-  },
-})
-
-export function RevenueChart() {
-  return <Chart definition={definition} height={320} ariaLabel="Monthly revenue" />
-}
-```
-
-## Notes
-
-- Alpha minor releases may contain breaking API changes; pin 0.16.0 for reproducible evaluation.
-- Both positional scales are required.
-- The default React host renders SVG. Other rendering hosts use explicit package subpaths.
-- Memoize a complete chart definition when it depends on changing component values.
-- The moving `/charts/latest` site follows the main branch and can be newer than this release. Use the pinned release-source docs for implementation against 0.16.0.
+Use this page when work mentions stability, installation, and react quick start, or when an implementation touches the APIs and lifecycle boundaries described above. Re-open the exact-tag sources before relying on signatures not reproduced here; this page organizes the documented behavior but does not replace the complete generated API reference.
 
 ## Sources
 
-- https://tanstack.com/charts/latest/docs/installation
-- https://tanstack.com/charts/latest/docs/framework/react/quick-start
-- https://github.com/TanStack/charts/blob/main/docs/stability.md
+- https://github.com/TanStack/charts/blob/v0.16.0/docs/stability.md
+- https://github.com/TanStack/charts/blob/v0.16.0/docs/installation.md
+- https://github.com/TanStack/charts/blob/v0.16.0/docs/framework/react/quick-start.md
+

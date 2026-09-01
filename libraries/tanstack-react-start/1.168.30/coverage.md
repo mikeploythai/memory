@@ -11,10 +11,37 @@ source_ref: "@tanstack/react-start@1.168.30 / 62a191baa068e9a2d27815cc82fb2a1669
 
 This map records the bounded first depth batch for React Start 1.168.30. `indexed` means a retrieval page exists in this directory. `deferred` means the immutable tag contains authoritative material reserved for another batch. `not present` means the exact-tag documentation has no dedicated page.
 
+## Bootstrap chain
+
+| Required step | Status | Memory evidence |
+|---|---|---|
+| Package choice, framework scope, and prerequisites | ready | `overview-and-package-choice.md` |
+| Project creation and installation | ready | `getting-started.md` |
+| Exact-version manual setup | ready | `build-from-scratch.md` |
+| Required plugins, files, document shell, and generated route tree | ready | `build-from-scratch.md`, `routing.md` |
+| Minimal runnable application | ready | `build-from-scratch.md`, `routing.md` |
+| Development and production-build verification | ready | `build-from-scratch.md`, `routing.md` |
+| Setup mistakes and version-sensitive caveats | ready | `getting-started.md`, `build-from-scratch.md`, `routing.md` |
+
+## Task readiness
+
+| Task | Status | Evidence or gap |
+|---|---|---|
+| Greenfield Start project | ready | Complete bootstrap chain above; feature pages cover server boundaries, middleware, auth, rendering, and hosting |
+| Common full-stack feature work | partial | Server functions, routes, auth, middleware, and streaming are indexed; databases, styling, and integration examples remain deferred |
+| Debugging | partial | Hydration, environment, import-boundary, middleware, and observability failures are indexed; the dedicated error-boundaries page remains deferred |
+| Migration | partial | Greenfield target behavior is indexed; framework-specific migration pages remain deferred |
+| Local production build and run | ready | Pinned scripts, Nitro output, client/server entry points, build-time type and import-protection checks, and a local production smoke test are indexed |
+| Provider deployment and hosting | partial | Hosting concepts and observability are indexed, but provider adapters, provider configuration, and deployment commands remain external/deferred |
+
 ## Indexed in this batch
 
 | Status | Memory page | Exact-tag source topics |
 |---|---|---|
+| indexed | `overview-and-package-choice.md` | overview, Start versus Router, prerequisites |
+| indexed | `getting-started.md` | Builder, CLI, examples, manual-setup routing |
+| indexed | `build-from-scratch.md` | installation, TypeScript, build plugins, required files, first route, run/build verification |
+| indexed | `routing.md` | router factory, root document, file routes, generated route tree |
 | indexed | `execution-model-and-code-boundaries.md` | execution model, execution patterns |
 | indexed | `server-functions.md` | server functions |
 | indexed | `environment-functions-and-import-protection.md` | environment functions, import protection |
@@ -30,9 +57,9 @@ This map records the bounded first depth batch for React Start 1.168.30. `indexe
 
 ## Deferred exact-tag corpus
 
-- Getting started: `overview.md`, `getting-started.md`, `build-from-scratch.md`, `comparison.md`, `start-vs-nextjs.md`, `migrate-from-next-js.md`.
+- Orientation and migration: `comparison.md`, `start-vs-nextjs.md`, `migrate-from-next-js.md`.
 - Tutorials: `tutorial/reading-writing-file.md`, `tutorial/fetching-external-api.md`.
-- Server/execution: `guide/routing.md`, `path-aliases.md`, `static-server-functions.md`, `error-boundaries.md`. Their related concepts are mentioned here but the dedicated pages remain deferred.
+- Server/execution: `path-aliases.md`, `static-server-functions.md`, `error-boundaries.md`. Their related concepts are mentioned here but the dedicated pages remain deferred.
 - Rendering: `guide/isr.md`, `early-hints.md`, `cdn-asset-urls.md`. Incremental regeneration is not implied by the static-prerendering page.
 - Data: `guide/databases.md`.
 - Styling and metadata: `guide/css-styling.md`, `tailwind-integration.md`, `rendering-markdown.md`, `seo.md`, `geo.md`.
@@ -46,7 +73,7 @@ This map records the bounded first depth batch for React Start 1.168.30. `indexe
 - No single anti-pattern or security reference. This batch keeps each failure mode attached to its execution, import, auth, middleware, or hydration source.
 - No guarantee that hosted `latest` matches 1.168.30. Start was in a release-candidate/pre-stable period, so the immutable package tag is required.
 
-Stopping point: twelve high-value semantic pages plus this map. The remaining guides, examples, Router cross-links, and package API source are explicitly deferred.
+Stopping point: a complete four-page bootstrap chain, twelve depth pages, and this map. The remaining guides, examples, Router cross-links, and package API source are explicitly deferred.
 
 ## Sources
 

@@ -19,8 +19,35 @@ Server functions can be called from route loaders, components through the React 
 
 Use middleware for cross-cutting request context, authentication, or logging rather than duplicating it in every function. Keep each function focused on one operation so validation, permissions, cache invalidation, and failure behavior remain easy to inspect.
 
+## Minimal typed server function
+
+After the greenfield routing setup, replace `src/routes/index.tsx` with this exact-release pattern:
+
+```tsx
+import { createFileRoute } from '@tanstack/react-router'
+import { createServerFn } from '@tanstack/react-start'
+
+const getServerTime = createServerFn({ method: 'GET' }).handler(() => {
+  return new Date().toISOString()
+})
+
+export const Route = createFileRoute('/')({
+  loader: () => getServerTime(),
+  component: Home,
+})
+
+function Home() {
+  const serverTime = Route.useLoaderData()
+  return <p>Server time: {serverTime}</p>
+}
+```
+
+The handler's inferred return type flows through the server-function call, route loader, and `useLoaderData`. For input, chain `.validator((input: Input) => validatedInput)` before `.handler(({ data }) => ...)`; runtime validation and authorization still belong inside the server boundary.
+
+Run `npm run dev`, load `/`, and confirm a server timestamp renders. Refresh and confirm it changes. Then run `npm run build` followed by `npm run start` and repeat the check against the production server. The production build must also succeed with import protection enabled; build-time import-protection failures mean restricted code survived tree shaking.
+
 ## Sources
 
 - https://github.com/TanStack/router/blob/62a191baa068e9a2d27815cc82fb2a16690fedea/docs/start/framework/react/guide/server-functions.md
-
+- https://github.com/TanStack/router/blob/62a191baa068e9a2d27815cc82fb2a16690fedea/examples/react/start-counter/src/routes/index.tsx
 

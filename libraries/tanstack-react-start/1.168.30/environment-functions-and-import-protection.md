@@ -17,6 +17,16 @@ Keep imports flowing in the safe direction. Shared code should depend on pure ty
 
 Environment helpers fail deliberately when used in the wrong runtime. Do not catch that failure and silently fall back to insecure behavior. If a feature genuinely needs both implementations, define both rather than reaching for a server function from a low-level shared utility without considering network and async behavior.
 
+The exact helpers are `createServerOnlyFn`, `createClientOnlyFn`, and `createIsomorphicFn` from `@tanstack/react-start`. `createServerOnlyFn(() => value)` throws if called on the client; `createClientOnlyFn(() => value)` throws on the server. `createIsomorphicFn().server(serverImpl).client(clientImpl)` selects and tree-shakes the environment-specific implementation.
+
+Import protection is experimental but enabled by default. Client builds deny `**/*.server.*` and `@tanstack/react-start/server`; server builds deny `**/*.client.*`. A module can also declare its boundary with a top-level side-effect import:
+
+```ts
+import '@tanstack/react-start/server-only'
+```
+
+Development defaults to warning and mocking a denied import. Production build defaults to an error. Therefore `npm run build` is the decisive boundary check. Type-only imports are ignored because they do not survive into runtime bundles.
+
 Server functions remain the network-call boundary for client-initiated privileged work. Environment functions choose a local implementation for the current runtime; they are not automatically RPC endpoints. Confusing the two can make browser code attempt to execute a server-only implementation.
 
 ## Sources
@@ -24,5 +34,4 @@ Server functions remain the network-call boundary for client-initiated privilege
 - https://github.com/TanStack/router/blob/62a191baa068e9a2d27815cc82fb2a16690fedea/docs/start/framework/react/guide/environment-functions.md
 - https://github.com/TanStack/router/blob/62a191baa068e9a2d27815cc82fb2a16690fedea/docs/start/framework/react/guide/import-protection.md
 - https://github.com/TanStack/router/blob/62a191baa068e9a2d27815cc82fb2a16690fedea/docs/start/framework/react/guide/code-execution-patterns.md
-
 

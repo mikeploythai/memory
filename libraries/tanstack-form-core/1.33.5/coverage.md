@@ -9,7 +9,7 @@ source_ref: "@tanstack/form-core@1.33.5 (b865ef335a69aa08a2f160895258f13e0377346
 
 # TanStack Form 1.33.5 coverage map
 
-## First-party sources inspected
+## Sources
 
 - https://tanstack.com/form/latest/llms.txt
 - https://tanstack.com/form/latest/docs/index.md
@@ -94,5 +94,6 @@ This core batch indexes stable-v1 package selection and the API/framework gap
 map. React bootstrap, validation, submission, and composition live under
 `@tanstack/react-form@1.33.5` and remain partial beyond the retained examples.
 Complete non-React adapters, arrays, SSR, React Native, devtools operation,
-example projects, and alpha documentation are deferred. No catalog entry is
-created.
+example projects, and alpha documentation are deferred. The catalog contains
+this coverage map and each substantive page retained in the batch.
+

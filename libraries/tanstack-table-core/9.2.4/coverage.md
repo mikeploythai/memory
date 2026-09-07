@@ -9,7 +9,7 @@ source_ref: "@tanstack/table-core@9.2.4 (d01c01bedbab0ff6c2641f18b2fc9a11545d9bf
 
 # TanStack Table 9.2.4 coverage map
 
-## First-party sources inspected
+## Sources
 
 - https://tanstack.com/table/latest/llms.txt
 - https://tanstack.com/table/latest/docs/index.md
@@ -91,4 +91,6 @@ This draft batch indexes core package decisions, row-model fundamentals,
 server/client processing, migration discovery, and the API map. React-specific
 bootstrap and rendering live under `@tanstack/react-table@9.2.4`. It defers
 per-feature API pages, complete apps, devtools operation, accessibility recipes,
-and the example corpus. No catalog entry is created.
+and the example corpus. The catalog contains this coverage map and each
+substantive page retained in the batch.
+

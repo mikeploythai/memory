@@ -2,7 +2,7 @@
 library: "@tanstack/react-pacer"
 version: "0.23.0"
 topic: "queues batches async retry and persistence"
-source: "https://github.com/TanStack/pacer/blob/c75895520669b08dc8946b42e1a6d529ca977230/docs/framework/react/guides/queuing.md"
+source: "https://github.com/TanStack/pacer/blob/c75895520669b08dc8946b42e1a6d529ca977230/docs/guides/queuing.md"
 retrieved_at: "2026-08-31"
 source_ref: "c75895520669b08dc8946b42e1a6d529ca977230"
 ---
@@ -148,3 +148,4 @@ For example, subscribe only to queue size when that is all the UI renders:
 - [Vanilla async retrying](https://tanstack.com/pacer/latest/docs/framework/vanilla/guides/async-retrying.md)
 - [React adapter](https://tanstack.com/pacer/latest/docs/framework/react/adapter.md)
 - [Release repository](https://github.com/TanStack/pacer/tree/c75895520669b08dc8946b42e1a6d529ca977230)
+

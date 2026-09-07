@@ -62,7 +62,7 @@ rows remain blocked.
 | React quick start | partial | Unified import boundary retained; full component deferred |
 | Octane quick start | deferred | Requires adapter-specific page |
 | Other framework adapters | deferred | Adapter and component pages need package-focused batches |
-| Grammar and definitions | indexed | [`grammar-definitions-scales-and-marks.md`](grammar-definitions-scales-and-marks.md) |
+| Grammar and definitions | partial | [`grammar-definitions-scales-and-marks.md`](grammar-definitions-scales-and-marks.md) covers the model and API boundaries; a complete `defineChart()` definition is deferred |
 | Data, channels, scales, marks, layout | indexed at overview level | Same page; exact signatures route to reference |
 | Responsive charts and themes | partial | Runtime considerations retained; focused recipes deferred |
 | Accessibility and focus | indexed at overview level | [`interaction-rendering-accessibility-and-performance.md`](interaction-rendering-accessibility-and-performance.md) |
@@ -124,3 +124,4 @@ blocked until that executable chain passes using Memory alone.
 - https://tanstack.com/charts/latest/llms.txt
 - https://github.com/TanStack/charts/tree/258ed39382b09843f98e6f48a2e9d4d0bd3f1d41/docs
 - https://github.com/TanStack/charts/tree/258ed39382b09843f98e6f48a2e9d4d0bd3f1d41/packages
+

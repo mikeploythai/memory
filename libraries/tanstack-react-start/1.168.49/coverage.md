@@ -9,7 +9,7 @@ source_ref: "@tanstack/react-start@1.168.49; commit a5a5bacc8fdf30b7823caf0a9490
 
 # Coverage map
 
-## First-party sources inspected
+## Sources
 
 | Source | Result |
 |---|---|
@@ -57,8 +57,8 @@ Production startup and deployment remain provider-specific.
 | Task | Status | Indexed evidence |
 |---|---|---|
 | Greenfield React/Vite setup | partial | [bootstrap](bootstrap-and-build-from-scratch.md) lacks complete route files, full TypeScript configuration, and pinned package versions |
-| Common server work | ready | [execution and server functions](execution-server-functions-and-middleware.md) |
-| Rendering and SSR selection | ready | [rendering and hosting](rendering-ssr-and-hosting.md) |
+| Common server work | partial | [execution and server functions](execution-server-functions-and-middleware.md) preserves the model and selected snippets; complete invocation, middleware attachment, and server-route implementations are deferred |
+| Rendering and SSR selection | partial | [rendering and hosting](rendering-ssr-and-hosting.md) preserves the mode model; executable route-level selection and root-shell handling are deferred |
 | Debugging | partial | Hydration and boundary failure modes indexed; observability details deferred |
 | Migration | partial | Next.js mapping indexed; no verified migrated application |
 | Production/build concerns | partial | Build and provider patterns indexed; universal production start is not present |
@@ -69,8 +69,8 @@ Production startup and deployment remain provider-specific.
 |---|---:|---|
 | Getting Started | 9 React/Solid pages | React overview, setup, scratch build, and migration indexed |
 | Tutorials | 4 pages | deferred |
-| Server & Execution | 26 React/Solid pages | React execution, functions, middleware, routes, environment indexed |
-| Rendering | 18 React/Solid pages | React SSR, hydration, static modes, entries mapped |
+| Server & Execution | 26 React/Solid pages | partial; React execution and boundaries are mapped, while complete functions, middleware attachment, and server-route implementations are deferred |
+| Rendering | 18 React/Solid pages | partial; React SSR, hydration, static modes, and entries are mapped without complete route-level implementations |
 | Deployment & Operations | 4 pages | React hosting indexed; observability deferred |
 | Authentication & Data | 8 pages | React boundary model indexed; provider details deferred |
 | Styling & Metadata | 9 pages | deferred |
@@ -83,8 +83,8 @@ Production startup and deployment remain provider-specific.
 |---|---|
 | Vite setup and generated routes | indexed |
 | Execution boundaries and import protection | indexed |
-| Server functions, middleware, server routes | indexed |
-| Selective SSR, SPA, hydration | indexed |
+| Server functions, middleware, server routes | partial |
+| Selective SSR, SPA, hydration | partial |
 | Static rendering and ISR | partial |
 | Cloudflare and Netlify hosting | partial; provider pinning still required |
 | Authentication and databases | partial; provider implementation deferred |
@@ -122,3 +122,4 @@ functions and middleware, rendering/SSR/hosting, authentication boundaries,
 Next.js migration, and API gaps. It defers Solid/Vue Start, tutorials,
 observability, styling/metadata, provider-specific auth and databases,
 experimental server components, detailed static generation, and most examples.
+

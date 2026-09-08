@@ -57,7 +57,7 @@ remain blocked.
 | Source section | Status | Indexed page or reason |
 |---|---|---|
 | Getting started | partial | [`bootstrap-react-and-server.md`](bootstrap-react-and-server.md); framework variants deferred |
-| Chat and streaming | indexed | [`chat-streaming-tools-and-structured-output.md`](chat-streaming-tools-and-structured-output.md) |
+| Chat and streaming | partial | [`chat-streaming-tools-and-structured-output.md`](chat-streaming-tools-and-structured-output.md) retains the core `chat()` shape and routes the broader transport/client corpus; complete transport signatures and client wiring are deferred |
 | Structured outputs | indexed at overview level | Same page; symbol-level interfaces deferred |
 | Tools and MCP | indexed at overview level | Same page; MCP codegen and manual clients deferred |
 | Middleware and observability | deferred | Separate advanced batch needed |
@@ -120,3 +120,4 @@ uses. Do not mark greenfield setup ready before that work succeeds.
 - https://tanstack.com/ai/latest/llms.txt
 - https://github.com/TanStack/ai/tree/b899fe5328f2907e5abbaa9c11b8f486caec229f/docs
 - https://github.com/TanStack/ai/tree/b899fe5328f2907e5abbaa9c11b8f486caec229f/packages
+

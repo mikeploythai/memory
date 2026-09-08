@@ -9,7 +9,7 @@ source_ref: "@tanstack/react-query@5.102.8; commit 2969edf32f7e0c48e2a108d84712d
 
 # Coverage map
 
-## First-party sources inspected
+## Sources
 
 | Source | Result |
 |---|---|
@@ -39,7 +39,7 @@ version slug for Svelte or Lit and does not replace exact npm evidence.
 |---|---|---|
 | Package choice and prerequisites | React package, React 18+, browser floor in [bootstrap](bootstrap-query-client-and-defaults.md) | ready |
 | Project creation | Query assumes an existing host application | not applicable |
-| Installation | Runtime and recommended ESLint commands in [bootstrap](bootstrap-query-client-and-defaults.md) | ready |
+| Installation | Runtime and recommended ESLint commands in [bootstrap](bootstrap-query-client-and-defaults.md) | partial; commands are unpinned and therefore do not reproduce exact `5.102.8` without an added version |
 | Core configuration | QueryClient and provider in [bootstrap](bootstrap-query-client-and-defaults.md) | ready |
 | Mental model | Keys, functions, observers, stale data, and cache lifecycle indexed | ready |
 | Minimal runnable application | Query component is complete, but host renderer/project is external | partial |
@@ -76,7 +76,7 @@ separately bootstrapped React application.
 | Category | Status |
 |---|---|
 | Queries, keys, cancellation, dependent work | indexed |
-| Pagination, infinite queries, and prefetch | indexed |
+| Pagination, infinite queries, and prefetch | partial; lifecycle guidance is indexed, but complete pagination and `useInfiniteQuery` implementations are deferred |
 | Mutations, invalidation, rollback | indexed |
 | SSR and hydration | partial; framework transfer details deferred |
 | Persistence | partial; package/API details deferred |
@@ -108,3 +108,4 @@ This five-file batch covers the React adapter's bootstrap, defaults, query/cache
 lifecycle, mutations, SSR/persistence/testing map, migrations, and API families.
 It defers generated API signatures, individual ESLint rules, Devtools options,
 most examples, and every non-React adapter's implementation details.
+

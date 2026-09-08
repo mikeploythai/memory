@@ -9,7 +9,7 @@ source_ref: "@tanstack/react-router@1.170.32; commit a5a5bacc8fdf30b7823caf0a949
 
 # Coverage map
 
-## First-party sources inspected
+## Sources
 
 | Source | Result |
 |---|---|
@@ -40,9 +40,9 @@ them.
 | Requirement | Evidence | Status |
 |---|---|---|
 | Package choice and prerequisites | React 18+, ReactDOM 18+, TypeScript 5.3+ recommended in [bootstrap](bootstrap-and-tooling.md) | ready |
-| Project creation | `npx @tanstack/cli create --router-only` in [bootstrap](bootstrap-and-tooling.md) | ready |
-| Installation | Runtime, devtools, and plugin commands in [bootstrap](bootstrap-and-tooling.md) | ready |
-| Manual setup | Vite configuration, required files, provider, and generated tree in [bootstrap](bootstrap-and-tooling.md) | ready |
+| Project creation | `npx @tanstack/cli create --router-only` in [bootstrap](bootstrap-and-tooling.md) | partial; the CLI target is mutable and unversioned |
+| Installation | Runtime, devtools, and plugin commands in [bootstrap](bootstrap-and-tooling.md) | partial; package commands are unpinned |
+| Manual setup | Vite configuration, provider, and generated-tree wiring in [bootstrap](bootstrap-and-tooling.md) | partial; complete root, index, and example route files are not retained |
 | Core mental model | Typed route tree, URL state, loaders, and context in the routing and data pages | ready |
 | Minimal runnable application | Complete Router provider plus documented route-file shape in [bootstrap](bootstrap-and-tooling.md) | partial |
 | Verification/build | Generated-tree and browser checks are known, but host scripts are bundler-specific and not fully supplied | partial |
@@ -57,7 +57,7 @@ result in a single pinned example.
 |---|---|---|
 | Greenfield setup | partial | [bootstrap](bootstrap-and-tooling.md) |
 | Common routing and URL-state work | ready | [routing and URL state](routing-navigation-and-url-state.md) |
-| Data loading and cache integration | ready | [data loading](data-loading-rendering-and-context.md) |
+| Data loading and cache integration | partial | [data loading](data-loading-rendering-and-context.md) covers loaders and cache boundaries; complete Query provider, context, and hydration wiring are deferred |
 | Debugging | partial | Failure modes are indexed; source-only debugging how-to remains deferred |
 | Migration | partial | [migration map](migrations-and-api-map.md); no end-to-end verified migrated app |
 | Production/build concerns | partial | SSR concepts indexed; deployment and bundler-specific verification deferred |
@@ -72,7 +72,7 @@ result in a single pinned example.
 | Navigation & URL State | 11 pages | Indexed at section level; specialist recipes deferred |
 | Data & Rendering | 10 pages | Indexed at section level |
 | Router Configuration | 9 pages | Context and core creation covered; events/static data deferred |
-| Integrations | 1 page | Query integration indexed |
+| Integrations | 1 page | Query integration partially indexed; complete provider, context, and hydration wiring are deferred |
 | ESLint | 2 pages | deferred |
 | API | 2 indexed aggregators; 81 pinned source files | Symbol map indexed; per-symbol content deferred |
 | Examples | 46 pages | Quick-start shapes used; remaining examples deferred |
@@ -84,7 +84,7 @@ result in a single pinned example.
 |---|---|
 | File- and code-based setup | indexed |
 | Search validation and typed navigation | indexed |
-| Query integration | indexed |
+| Query integration | partial |
 | Authentication and authorization | partial through context; dedicated how-to deferred |
 | Testing | not indexed; official how-to exists in pinned tree |
 | Debugging | not indexed; official `debug-router-issues.md` exists |
@@ -113,3 +113,4 @@ This five-file batch covers React Router bootstrap, routing and URL state, data
 loading and context, migrations, and an API map. It intentionally defers
 bundler-specific installations, ESLint rules, the active how-to corpus,
 per-symbol API pages, Solid/Vue adapters, and the full example gallery.
+

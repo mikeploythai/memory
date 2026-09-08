@@ -13,7 +13,7 @@ This bounded set covers core Pacer `0.22.0`, records independently versioned
 adapters and devtools, and treats Pacer Lite `0.2.2` as a separate release ref.
 TanStack labels the product beta.
 
-## First-party sources inspected
+## Sources
 
 | Source | Ref or behavior | Result |
 |---|---|---|
@@ -35,7 +35,7 @@ signatures must be reconciled against the release commit.
 |---|---|---|
 | Package choice and prerequisites | partial | [Package choice](package-choice-installation-and-quick-start.md) covers core, adapters, and Lite; runtime/tooling ranges are absent |
 | Project creation | not present | No application creator or starter command in Pacer docs |
-| Installation commands | ready | Exact npm commands are indexed for core and all four adapters |
+| Installation commands | partial | npm commands are indexed for core and all four adapters, but the commands are unpinned |
 | Getting started / quick start | partial | Core class/function examples exist; adapter quick starts are routed by package but are not retained as complete host applications |
 | Manual setup | not present | No build-from-scratch application page |
 | Required files/configuration | partial | Core utility snippets and adapter/provider API routing exist; filenames, adapter setup, and entry wiring are not supplied |
@@ -62,7 +62,7 @@ signatures must be reconciled against the release commit.
 | Utility-selection guide | [package choice](package-choice-installation-and-quick-start.md) and [debounce/throttle/rate limit](debounce-throttle-and-rate-limit.md) |
 | React, Preact, Solid, Angular adapters | [core, adapter, and devtools API map](core-adapter-and-devtools-api-map.md) |
 | Devtools | [core, adapter, and devtools API map](core-adapter-and-devtools-api-map.md) |
-| Sync debounce/throttle/rate-limit guides for five environments | [debounce/throttle/rate limit](debounce-throttle-and-rate-limit.md); repeated framework syntax deferred |
+| Sync debounce/throttle/rate-limit guides for five environments | partially indexed in [debounce/throttle/rate limit](debounce-throttle-and-rate-limit.md); exact rate-limit options and repeated framework syntax are deferred |
 | Sync queue/batch guides for five environments | React concepts are in [queues, batches, async retry, and persistence](../../tanstack-react-pacer/0.23.0/queues-batches-async-retry-and-persistence.md); exact batch option names and other framework implementations are deferred |
 | Five async utility guides for five environments | React queue and batch concepts are indexed; exact contracts and repeated framework pages are deferred |
 | Async retrying guides for five environments | React retry considerations are [partially indexed](../../tanstack-react-pacer/0.23.0/queues-batches-async-retry-and-persistence.md); release-specific retry and abort options are deferred |
@@ -121,3 +121,4 @@ rate-limit, queue, batch, retry, abort, and persister contracts, repeated
 framework guides, example galleries, generated symbol pages, and changelog
 synthesis. Feature work remains partial; greenfield and migration readiness
 remain blocked.
+

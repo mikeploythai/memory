@@ -108,8 +108,8 @@ prove accessibility, focus retention, or acceptable performance.
 
 ## Sources
 
-- https://github.com/TanStack/virtual/blob/e9874f033c74afd3251eeb9f3e60b2530cc7ae88/docs/framework/react/examples/fixed.md
-- https://github.com/TanStack/virtual/blob/e9874f033c74afd3251eeb9f3e60b2530cc7ae88/docs/framework/react/examples/dynamic.md
+- https://github.com/TanStack/virtual/blob/e9874f033c74afd3251eeb9f3e60b2530cc7ae88/examples/react/fixed/src/main.tsx
+- https://github.com/TanStack/virtual/blob/e9874f033c74afd3251eeb9f3e60b2530cc7ae88/examples/react/dynamic/src/main.tsx
 - https://github.com/TanStack/virtual/blob/e9874f033c74afd3251eeb9f3e60b2530cc7ae88/docs/api/virtualizer.md
 
 ## Gaps
@@ -117,3 +117,4 @@ prove accessibility, focus retention, or acceptable performance.
 No first-party page combines project creation, this component, stylesheet or
 entry files, and an observable development/build command into one bootstrap
 chain.
+

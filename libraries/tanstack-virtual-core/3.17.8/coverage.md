@@ -9,7 +9,7 @@ source_ref: "@tanstack/virtual-core@3.17.8 (e9874f033c74afd3251eeb9f3e60b2530cc7
 
 # TanStack Virtual 3.17.8 coverage map
 
-## First-party sources inspected
+## Sources
 
 - https://tanstack.com/virtual/latest/llms.txt
 - https://tanstack.com/virtual/latest/docs/index.md
@@ -42,7 +42,7 @@ complete project with creation, files, scripts, and verification.
 | Task | Status | Evidence |
 |---|---|---|
 | Basic React element virtualization | partial | [installation](installation-adapters-and-version-matrix.md), [React bootstrap](../../tanstack-react-virtual/3.14.10/react-bootstrap-and-rendering-model.md) |
-| Core API lookup | ready | [Virtualizer and VirtualItem](virtualizer-and-virtual-item-api.md) |
+| Core API orientation | partial | [Virtualizer and VirtualItem](virtualizer-and-virtual-item-api.md) maps the object model; exact implementation-sensitive signatures and options remain deferred |
 | Dynamic/window/grid/chat implementation | partial | [advanced patterns](dynamic-window-grid-chat-and-ssr-patterns.md) |
 | Debugging | partial | Failure modes are indexed; no dedicated troubleshooting guide exists. |
 | Migration | blocked | No first-party migration section is present. |
@@ -71,7 +71,7 @@ complete project with creation, files, scripts, and verification.
 | Category | Coverage |
 |---|---|
 | Fixed element virtualization | indexed |
-| Dynamic measurement | indexed |
+| Dynamic measurement | partial; behavior and cautions are indexed, but exact React measurement wiring is deferred |
 | Stable keys and data reorder | indexed |
 | Window virtualization | indexed at pattern level |
 | Grid and lanes | indexed at pattern level |
@@ -95,4 +95,6 @@ This core batch indexes package selection, the two core API pages, and
 advanced-pattern routing. The React rendering bootstrap lives under
 `@tanstack/react-virtual@3.14.10`. Complete adapter apps, all 58 example bodies,
 sticky/padding recipes, cross-browser benchmarks, and non-Marko SSR validation
-are deferred. No catalog entry is created.
+are deferred. The catalog contains this coverage map and each substantive page
+retained in the batch.
+

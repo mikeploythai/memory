@@ -13,7 +13,7 @@ This bounded set covers the core package and records adapter versions where
 their APIs provide the practical application entry points. TanStack labels the
 product alpha.
 
-## First-party sources inspected
+## Sources
 
 | Source | Ref or behavior | Result |
 |---|---|---|
@@ -34,7 +34,7 @@ release commit and must not silently override release-pinned signatures.
 |---|---|---|
 | Package choice and prerequisites | partial | [Installation](installation-and-first-hotkey.md) maps core and adapters; no runtime/framework/tooling ranges |
 | Project creation | not present | No creator or starter command in official Hotkeys docs |
-| Installation commands | ready | Core and React npm commands plus complete adapter package map are indexed |
+| Installation commands | partial | Core and React npm commands plus the adapter package map are indexed, but the commands are unpinned |
 | Getting started / quick start | partial | Five framework quick starts exist; Preact, Solid, and vanilla lack complete quick starts |
 | Manual setup | not present | No standalone manual project assembly page |
 | Required files and configuration | partial | React hook/provider behavior is indexed under the React adapter, but filenames and application entry wiring are not specified |
@@ -114,3 +114,4 @@ sequences, recording, key state, and display normalization. It defers exact
 sequence-recorder commit behavior, collection signatures, the example gallery,
 other framework implementations, generated symbol pages, and changelog
 synthesis. Task readiness remains partial wherever those details are required.
+
